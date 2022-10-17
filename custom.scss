@@ -1,0 +1,889 @@
+@import "variables";        // IMPORTING SASS VARIABLES
+@import "mixins";           // IMPORTING SASS MIXINS FILES
+
+// IMPORTING GOOGLE FONTS
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;600&display=swap');
+
+*, ::before, *::after{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Heebo, sans-serif;
+}
+
+// HEADER SECTION SASS
+header{
+    @include container($lightColor, $darkColor, 20px, 100px);
+    @include flex(row, start, center);
+}
+
+// BANNER SECTION SASS
+.banner_section{
+    position: relative;
+
+    img{
+        @include image;
+        height: 500px;
+    }
+}
+
+.banner_textarea{
+    @include container($noneColor, $lightColor, 80px, 100px);
+    text-shadow: 0px 0px 5px $darkColor;
+    position: absolute;
+    top: 0;
+    
+    h1{
+        @include headings($lightColor ,40px);
+    }
+    
+    p.slogan{
+       font-size: 22px;
+    }
+
+    .btn-1{
+        @include button(150px,50px);       
+        position: relative;
+        transform: translateY(10px);
+    }
+
+    .btn-1:before {
+            pointer-events: none;
+            position: absolute;
+            z-index: -1;
+            content: '';
+            border-style: solid;
+            transition-duration: 0.5s;
+            transition-property: transform;
+            left: calc(50% - 10px);
+            bottom: 0;
+            border-width: 10px 10px 0 10px;
+            border-color: $primaryColor transparent transparent transparent;
+            transform: translateY(10px);  
+          }
+
+    .btn-1:hover{
+        background-color: $secondaryColor;
+        border-color: $secondaryColor transparent transparent transparent;
+        transform: translateY(10px);
+    }
+
+    .btn-1:hover::before{
+        transform: translateY(10px);
+        border-color: $secondaryColor transparent transparent transparent;
+    }
+}
+
+// FORM SECTION SASS
+form{
+    .form_text{
+        @include flex(row, space-between, center);
+        color: $darkColor;
+        text-shadow: none;
+        width: calc(100% - 40px);
+        margin-top: 40px;
+        gap: 40px;
+    }
+    
+    .radio_checkbox{
+        @include flex(row, space-between, center);
+        text-shadow: 2px 2px 4px $lightColor;
+        width: calc(50% - 40px);
+        gap: 10px;
+    }
+
+    .form-select{
+        background-color: transparent;
+        text-shadow: 2px 2px 4px $lightColor;
+        border: none;
+    }
+
+    label{
+        margin: 0px 10px;
+    }
+
+    .form-switch{
+        color: $lightColor;
+        text-shadow: 2px 2px 4px $darkColor;
+        width: 50%;
+    }
+
+    .booking_section{
+        @include flex(row, space-between, center);
+        width: calc(100% - 3%);
+        gap: 1%;
+        margin-top: 10px;
+
+        .bookings{
+            box-shadow: 2px 2px 4px $darkGrayColor
+        }
+
+        .bookings:nth-child(1){
+            width: 25%;
+        }
+
+        .bookings:nth-child(2){
+            width: 25%;
+            position: relative;
+        }
+
+        .bookings:nth-child(3){
+            width: 15%;
+        }
+
+        .bookings:nth-child(4){
+            width: 15%;
+        }
+
+        .bookings:nth-child(5){
+            box-shadow: none;
+            width: 15%;
+        }
+
+        .bookings{
+            @include flex(column, start, start);
+            position: relative;
+            background-color: $lightColor;
+            border-radius: 15px;
+            padding: 15px;
+    
+            label{
+                color: $darkGrayColor;
+                text-shadow: none;
+                margin: 0;
+            }
+    
+            input{
+                border: none; 
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .circle_container{
+                position: absolute;
+                top: 20px;
+                right: -30px;
+                z-index: 1;
+
+                .circle{
+                    width: 50px;
+                    height: 50px;
+                    background-color: $primaryColor;
+                    border-radius: 100%;
+                    position: relative;
+                    font-size: 20px;
+                    text-shadow: none;
+    
+                    .fa-long-arrow-right{
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                    }
+    
+                    .fa-long-arrow-left{
+                        position: absolute;
+                        bottom: 10px;
+                        left: 10px;
+                    }
+                }    
+            }
+            
+            input[type=text]:focus, input[type=date]{
+                outline: none;
+            }
+
+            input[type="date"]::-webkit-inner-spin-button,
+            input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+            }
+
+            input[type=date]{
+                font-size: 18px;
+            }
+
+            .fa-calendar{
+                position: absolute;
+                top:50%;
+                right: 5%;
+                transform: translate(-50%,-50%);
+                color: $primaryColor;
+            }
+    
+            ::placeholder{
+                color: $darkColor;
+                font-size: 18px;
+            }
+        }
+
+        .last_box{
+            background-color: transparent;
+
+            .btn-2{
+                @include button(150px, 90px);
+                font-size: 20px;
+                font-weight: bold;
+                border-radius: 15px;
+            }
+
+            .btn-2:hover{
+                background-color: $secondaryColor;
+            }
+        }
+    }
+}
+
+// NOTIFICATION SECTION SASS
+.intro_section{
+    @include container($lightGrayColor, $darkColor, 40px, 100px);
+    @include flex(row, center, center);
+    gap: 40px;
+
+    .bell_icon{
+        @include container($secondaryColor, $lightColor, 30px, 50px);
+        @include flex(row, center, center);
+        width: 50px;
+        height: auto;
+        font-size: 35px;
+        border-radius: 100%;
+        object-fit: cover;
+    }
+
+    .intro_content{
+        @include flex(column, start, start);
+
+        h2{
+            @include headings($secondaryColor, 25px);
+            margin-bottom: 20px;
+        }
+
+        input[type=text]:focus{
+            outline: none;
+            box-shadow: none;
+        }
+
+        button{
+            @include button(80px,60px);
+            border-radius: 10px;
+        }
+
+        button:hover{
+            background-color: $secondaryColor;
+        }
+
+        p{
+            font-size: 14px;
+
+            a{
+                text-decoration: none;
+                color: inherit;
+
+                span{
+                    color: $secondaryColor;
+                    text-decoration: underline;
+                }
+
+                span:hover{
+                    color: $primaryColor;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+// GALLERY SECTION SASS
+.gallery_section{
+    @include container($lightColor, $darkColor, 40px, 100px);
+
+    h2{
+        @include headings($secondaryColor, 30px);
+        margin-bottom: 40px;
+    }
+
+    .gallery_images{
+        display: grid;
+        grid-template-rows: repeat(2,300px);
+        grid-template-columns: repeat(4,1fr);
+        gap: 10px;
+
+        div{
+            img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s ease-in-out;
+            position: relative !important;
+            filter: grayscale(100%);
+        }
+
+        img:hover{
+            transform: perspective(500px) scale(1.01);
+            filter: grayscale(0);
+            cursor: pointer;
+        }
+
+        h3{
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            color: $lightColor;
+            text-shadow: 2px 2px 4px $darkColor;
+            z-index: 1;
+        }
+    }
+
+    .image_1{
+        grid-row: 1 / 3;
+        grid-column: 1 / 2;
+        position: relative;
+    }
+
+    .image_2{
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+        position: relative;
+    }
+
+    .image_3{
+        grid-row: 1 / 2;
+        grid-column: 3 / 4;
+        position: relative;
+    }
+
+    .image_4{
+        grid-row: 1 / 2;
+        grid-column: 4 / 5;
+        position: relative;
+    }
+
+    .image_5{
+        grid-row: 2 / 3;
+        grid-column: 2 / 5;
+        position: relative;
+    }
+}
+}
+
+// COUNTRIES SECTION SASS
+.countries_section , .cities_section{
+    @include container($secondaryColor, $lightColor, 40px, 100px);
+    padding-top: 60px;
+
+    p{
+        margin-top: 20px;
+    }
+
+    ul{
+        column-count: 4;
+        margin-top: 40px;
+        padding: 0;
+
+        li{
+            list-style-type: none;
+            margin-bottom: 10px;
+        }
+        
+        li:hover{
+            color: $primaryColor;
+            cursor: pointer;
+        }
+    }
+}
+
+// CITIES SECTION SASS
+.cities_section{
+    @include container($lightColor, $darkColor, 40px, 100px);
+    padding-top: 60px;
+
+    h2{
+        color: $secondaryColor;
+    }
+}
+
+// OFFERS SECTION SASS
+.text_media_section{
+    @include container($lightGrayColor, $darkColor, 60px, 100px);
+    @include flex(row, space-between, center);
+    width: 100%;
+
+    // TEXT SECTION SASS
+    .text_section{
+        width: 50%;
+        padding-right: 70px;
+
+        h2{
+            @include headings($primaryColor, 40px);
+        }
+
+        .description{
+            font-size: 16px;
+            margin: 20px 0px;
+        }
+
+        input[type=text]:focus{
+            outline: none;
+            box-shadow: none;
+        }
+
+        button{
+            @include button(80px,60px);
+            border-radius: 10px;
+        }
+
+        button:hover{
+            background-color: $secondaryColor;
+        }
+
+        p{
+            font-size: 14px;
+
+            a{
+                text-decoration: none;
+                color: inherit;
+
+                span{
+                    color: $secondaryColor;
+                    text-decoration: underline;
+                }
+
+                span:hover{
+                    color: $primaryColor;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    // IMAGE SECTION SASS
+    .media_section{
+        width: 50%;
+
+        img{
+            width: 100%;
+        }
+    }
+}
+
+// BACK TO TOP BUTTON SASS
+.fa-arrow-up{
+    background-color: $primaryColor;
+    color: $lightColor;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    text-align: center;
+    line-height: 40px;
+    right: 70px;
+    bottom: 70px;
+    border-radius: 5px;
+}
+
+// FOOTER SECTION SASS
+footer{
+    @include container($lightColor, $darkColor, 40px, 100px);
+    @include flex(row, space-between, center);
+    width: 100%;
+
+    // POLICY SECTION SASS
+    .policy{
+        @include flex(row, start, center);
+        width: 50%;
+
+        p{
+            margin: 0;
+        }
+
+        a{
+            text-decoration: none;
+            color: $secondaryColor;
+            margin-right: 20px;
+        }
+
+        a:hover{
+            color: $primaryColor;
+        }
+    }
+
+    // COPYRIGHT SECTION SASS
+    .rights{
+        width: 50%;
+
+        p{
+            margin: 0;
+        }
+
+        a{
+            text-align: right;
+            color: $secondaryColor;
+            text-decoration: none;
+            margin-bottom: 0;
+        }
+
+        a:hover{
+            color: $primaryColor;
+        }
+    }
+}
+
+// RESPONSIVESS FOR MOBILE ->> USING SASS
+@media screen and (max-width:767px){
+
+    header{
+        justify-content: start;
+        padding: 20px;
+
+        #logo{
+            width: 90%;
+        }
+    }
+
+    .banner_textarea{
+        padding: 20px;
+    }
+
+    form{
+        .form_text{
+            @include flex(column, start, start);
+            width: 100%;
+
+            .radio_checkbox{
+                @include flex(row, space-between, start);
+                width: 100%;
+                padding-right: 25px;
+            }
+
+            .form-switch{
+                text-align: left;
+                margin: -20px 0px 20px;
+            }
+        }
+
+        .booking_section{
+            @include flex(column, start, start);
+
+            img{
+                background-size: contain;
+            }
+
+            .bookings:nth-child(1){
+                width: calc(100% - 30px);
+                margin-bottom: 20px;
+            }
+
+            .bookings:nth-child(2){
+                width: calc(100% - 30px);
+            }
+
+            .bookings:nth-child(3){
+                width: calc(100% - 30px);
+                margin: 20px 0px;
+            }
+
+            .bookings:nth-child(4){
+                width: calc(100% - 30px);
+            }
+
+            .bookings:nth-child(5){
+                width: calc(100% - 30px);
+                height: 80px;
+                margin: 5px 0px 0px -10px;
+            }
+
+            .bookings{
+                .circle_container{
+                    .circle{
+                        bottom: -50px;
+                        left: -150px;
+                    }
+                }
+            }
+        }
+    }
+
+    .intro_section{
+        margin-top: 370px;
+        padding: 35px 20px 20px;
+        text-align: center;
+
+        .bell_icon{
+            width: 15px;
+            height: 100px;
+            font-size: 42px;
+        }
+
+        h2{
+            margin: auto;
+        }
+    }
+
+    .gallery_section{
+        padding: 30px 20px;
+
+        h2{
+            margin-bottom: 20px;
+        }
+
+        .gallery_images{
+            display: flex;
+            flex-direction: column;
+
+            div{
+                img{
+                    width: 100%;
+                    height: 300px;
+                }
+            }
+        }
+    }
+
+    .countries_section, .cities_section{
+        padding: 30px 20px 5px;
+
+        ul{
+            column-count: 2;
+        }
+    }
+
+    .text_media_section{
+        padding: 30px 20px;
+
+        .text_section{
+            width: 100%;
+            padding: 0;
+
+            h2{
+                font-size: 30px;
+            }
+        }
+
+        .media_section{
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
+
+    footer{
+        @include flex(column, start, start);
+        padding: 30px 20px;
+
+        .policy{
+            @include flex(column, start, start);
+            width: 100%;
+            gap: 10px;
+        }
+
+        .rights{
+            @include flex(column, start, start);
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
+
+    .fa-arrow-up{
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
+// RESPONSIVESS FOR I-PAD ->> USING SASS
+@media screen and (min-width:768px) and (max-width:1023px){
+
+    header{
+        padding: 20px 40px;
+
+        img{
+            width: 70%;
+        }
+    }
+
+    .banner_section{
+        img{
+            height: 635px;
+        }
+    }
+
+    .banner_textarea{
+        padding: 40px;
+
+        .form-switch{
+            margin-top:30px;
+        }
+
+        .booking_section{
+            .bookings:nth-child(1),
+            .bookings:nth-child(2),
+            .bookings:nth-child(3),
+            .bookings:nth-child(4){
+                width: calc(50% - 10px);
+                margin-top: 10px;
+            }
+            
+            .bookings:nth-child(5){
+                .btn-2{
+                    height: 60px;
+                    border-radius: 5px;
+                    margin-left: -10px;
+                }
+            }
+        }
+    }
+    .intro_section{
+        padding: 40px;
+
+        .bell_icon{
+            font-size: 45px;
+        }
+
+        p{
+            margin: 0;
+        }
+    }
+
+    .gallery_section{
+        padding: 40px;
+
+        .gallery_images{
+            grid-template-rows: repeat(2,200px);
+            grid-template-columns: repeat(4,1fr);
+        }
+    }
+
+    .countries_section, .cities_section{
+        padding: 40px 40px 10px;
+    }
+
+    .text_media_section{
+        padding: 40px;
+
+        .text_section{
+            padding-right: 40px;
+
+            h2{
+                font-size: 30px;
+            }
+        }
+
+        .media_section{
+            img{
+                height: 350px;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .fa-arrow-up{
+        right: 40px;
+        bottom: 100px;
+    }
+
+    footer{
+        padding: 40px;
+
+        .policy{
+            width: 100%;
+        }
+
+        .rights{
+            width: 100%;
+            margin-top: 20px;
+        }
+    } 
+}
+
+// RESPONSIVESS FOR I-PAD PRO ->> USING SASS
+@media screen and (min-width:1024px) and (max-width:1199px){
+
+    header{
+        padding: 20px 40px;
+
+        img{
+            width: 70%;
+        }
+    }
+
+    .banner_section{
+        img{
+            height: 635px;
+        }
+    }
+
+    .banner_textarea{
+        padding: 40px;
+
+        .form-switch{
+            margin-top:30px;
+        }
+
+        .radio_checkbox{
+            width: calc(50% - 80px);
+        }
+
+        .booking_section{
+            .bookings:nth-child(1),
+            .bookings:nth-child(2),
+            .bookings:nth-child(3),
+            .bookings:nth-child(4){
+                width: calc(50% - 10px);
+                margin-top: 10px;
+            }
+
+            .bookings:nth-child(5){
+                .btn-2{
+                    height: 60px;
+                    border-radius: 5px;
+                    margin-left: -10px;
+                }
+            }
+        }
+    }
+
+    .intro_section{
+        padding: 40px;
+
+        .bell_icon{
+            font-size: 45px;
+        }
+
+        p{
+            margin: 0;
+        }
+    }
+
+    .gallery_section{
+        padding: 40px;
+    }
+
+    .countries_section, .cities_section{
+        padding: 40px 40px 10px;
+    }
+
+    .text_media_section{
+        padding: 40px;
+
+        .text_section{
+            padding-right: 40px;
+        }
+    }
+
+    .fa-arrow-up{
+        right: 40px;
+        bottom: 100px;
+    }
+
+    footer{
+        padding: 40px;
+
+        .policy{
+            width: 100%;
+        }
+
+        .rights{
+            width: 100%;
+            margin-top: 20px;
+        }
+    }
+}

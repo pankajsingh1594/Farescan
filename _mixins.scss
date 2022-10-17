@@ -1,0 +1,42 @@
+// CREATING MIXIN FOR FLEXBOX
+@mixin flex($direction, $justify_Content, $align_items) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify_Content;
+    align-items: $align_items;
+    flex-wrap: wrap;
+}
+
+// CREATING MIXIN FOR A ROW CONTAINER
+@mixin container($bgColor, $color, $paddingY, $paddingX){
+    background-color: $bgColor;
+    color: $color;
+    width: 100%;
+    padding: $paddingY $paddingX;
+}
+
+// CREATING MIXIN FOR IMAGES
+@mixin image{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+}
+
+// CREATING MIXIN HEADINGS
+@mixin headings($headingColor, $headingSize){
+    font-family: Montserrat, sans-serif;
+    font-size: $headingSize;
+    font-weight: 600;
+    color: $headingColor;
+}
+
+// CREATING MIXIN FOR BUTTONS
+@mixin button($width, $height){
+    background-color: $primaryColor;
+    color: $lightColor;
+    border: none;
+    border-radius: 5px;
+    width: $width;
+    height: $height;
+}
